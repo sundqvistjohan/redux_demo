@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 
 class App extends Component {
+  state = {
+    message: 'Hello world from component state'
+  }
   render() {
     return (
       <div>
-        Hello worldman
+        {this.state.message}
       </div>
     );
   }
