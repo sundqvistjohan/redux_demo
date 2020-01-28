@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
 import ChangeMessageForm from "./ChangeMessageForm"
 import DisplayMessage from "./DisplayMessage"
+import { connect } from "react-redux"
 
 class App extends Component {
 
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(position => {
+      this.props.dispatch({type: 'SET_GEOLOCATION' , payload: position.coords})
+    })
+  }
+  
   render() {
     return (
       <>
-        <DisplayMessage />
-        <ChangeMessageForm />
+        {this.props.coords &&
+        <>
+        <h1>Latitude: {this.props.coords.latitude}</h1>
+        <h1>Longitude: {this.props.coords.longitude}</h1>
+        </>
+        }
       </>
     );
   }
@@ -16,8 +27,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    message: state.message
+    coords: state.coords
   }
 }
 
-export default App
+export default connect(mapStateToProps)(App)

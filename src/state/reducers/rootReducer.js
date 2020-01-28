@@ -8,6 +8,11 @@ const rootReducer = (state = initialState, action) => {
     }
   } else if (action.type === 'RESET_MESSAGE') {
     return initialState
+  } else if (action.type === 'SET_GEOLOCATION') {
+    return {
+      ...state,
+      coords: action.payload
+    }
   } else {
     return state
   }
