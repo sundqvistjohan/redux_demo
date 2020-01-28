@@ -1,0 +1,8 @@
+{
+  "en": {
+    "messages": {
+      "latMessage": "Your latitude",  
+      "longMessage": "Your longitude"
+    }
+  }
+}
